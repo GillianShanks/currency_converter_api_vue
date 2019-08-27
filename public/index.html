@@ -21,10 +21,14 @@
             <option v-for="(rate, currency) in rates" :key="currency" :value="[currency, rate]">{{currency}}</option>
           </select>
         </div> -->
-        <p>Euro</p>
+        <p class="flex center">Euro</p>
+
+        <p>convert to</p>
+
         <div id="convert-to-select" class="flex center">
-          <select id="currency-select" v-model="rate2" @change="convertToEuro">
-            <option selected disabled value="">Currency:</option>
+          <select id="currency-select" v-model="rate2">
+            <!-- <option selected disabled value="">Currency:</option> -->
+            <option selected :value="[base, 1]">{{base}}</option>
             <option v-for="(rate, currency) in rates" :key="currency" :value="[currency, rate]">{{currency}}</option>
           </select>
         </div>
@@ -35,18 +39,17 @@
           <div class="center">
             <p>{{rate1[0]}}</p>
           </div>
-          <input v-model="euroInput" type="number" min="0" @change="convertFromEuro"/>
+          <input v-model="euroInput" type="number" min="0" @change="convertToEuro"/>
         </div> -->
 
-        <div id="rate1" class="flex center flex-row">
+        <div id="euro" class="flex center flex-row">
           <div class="center">
-            <p>{{rate1[0]}}</p>
+            <p>{{base}}</p>
           </div>
-          <input v-model="euroInput" type="number" min="0" @change="convertFromEuro"/>
+          <input v-model="euroInput" type="number" min="0" :value="convertFromEuro"/>
         </div>
-
         <div id="rate2" class="flex center flex-row">
-          <input v-model="input2" type="number" min="0" @change="convertToEuro"/>
+          <input v-model="input2" type="number" min="0" :value="convertToEuro"/>
           <div class="center">
             <p>{{rate2[0]}}</p>
           </div>

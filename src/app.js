@@ -6,12 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
     data: {
       rates: null,
       base: null,
-      rate1: ["", 0],
+      // rate1: ["", 0],
       rate2: ["", 0],
-      euroInput: null,
-      input2:null
+      // input1:0,
+      euroInput:0,
+      input2:0
     },
     computed: {
+      convertToEuro: function(){
+        this.euroInput = this.input2/this.rate2[1];
+      },
+      convertFromEuro: function(){
+        this.input2 = this.rate2[1] * this.euroInput;
+      }
 
     },
     mounted() {
@@ -23,15 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then((data) => {
           this.rates = data.rates;
+          // this.rates['EUR']=1;
           this.base = data.base;
         })
       },
-      convertToEuro: function(){
-        this.euroInput = this.input2/this.rate2[1];
-      },
-      convertFromEuro: function(){
-        this.input2 = this.rate2[1] * this.euroInput;
-      }
+
     }
   });
 })
