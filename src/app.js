@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     el: '#app',
     data: {
       rates: null,
-      base: null
+      base: null,
+      currentRate: null,
+      inputNumber: null
     },
     computed: {
 
