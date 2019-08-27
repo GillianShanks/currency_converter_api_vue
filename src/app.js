@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     data: {
       rates: null,
       base: null,
-      currentRate: null,
-      inputNumber: null
+      rate1: ["", 0],
+      rate2: ["", 0],
+      euroInput: null,
+      input2:null
     },
     computed: {
-      convertedNumber: function(){
-        return this.currentRate[1] * this.inputNumber;
-      }
+
     },
     mounted() {
       this.fetchCurrencies();
@@ -25,6 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
           this.rates = data.rates;
           this.base = data.base;
         })
+      },
+      convertToEuro: function(){
+        this.euroInput = this.input2/this.rate2[1];
+      },
+      convertFromEuro: function(){
+        this.input2 = this.rate2[1] * this.euroInput;
       }
     }
   });

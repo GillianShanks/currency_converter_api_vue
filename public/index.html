@@ -10,29 +10,52 @@
 </head>
 <body>
   <div id="app" >
-  <h1>Currency converter</h1>
+    <h1>Currency converter</h1>
 
-  <div id="titles" class="flex flex-row between">
-    <h3>Convert from ({{base}}):</h3>
-    <h3>Convert to:</h3>
-    <h3>Converted amount:</h3>
+    <div class="flex flex-col">
+
+      <div id="titles" class="flex flex-row between">
+        <!-- <div id="convert-to-select" class="flex center">
+          <select id="currency-select" v-model="rate1" @change="convertFromEuro">
+            <option selected disabled value="">Currency:</option>
+            <option v-for="(rate, currency) in rates" :key="currency" :value="[currency, rate]">{{currency}}</option>
+          </select>
+        </div> -->
+        <p>Euro</p>
+        <div id="convert-to-select" class="flex center">
+          <select id="currency-select" v-model="rate2" @change="convertToEuro">
+            <option selected disabled value="">Currency:</option>
+            <option v-for="(rate, currency) in rates" :key="currency" :value="[currency, rate]">{{currency}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="row" class="flex flex-row between">
+        <!-- <div id="rate1" class="flex center flex-row">
+          <div class="center">
+            <p>{{rate1[0]}}</p>
+          </div>
+          <input v-model="euroInput" type="number" min="0" @change="convertFromEuro"/>
+        </div> -->
+
+        <div id="rate1" class="flex center flex-row">
+          <div class="center">
+            <p>{{rate1[0]}}</p>
+          </div>
+          <input v-model="euroInput" type="number" min="0" @change="convertFromEuro"/>
+        </div>
+
+        <div id="rate2" class="flex center flex-row">
+          <input v-model="input2" type="number" min="0" @change="convertToEuro"/>
+          <div class="center">
+            <p>{{rate2[0]}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div id="row" class="flex flex-row between">
-    <div class="flex center">
-      <input v-model="inputNumber" type="number" min="0"/>
-    </div>
-    <div id="convert-to-select" class="flex center">
-      <select id="currency-select" v-model="currentRate">
-        <option selected disabled value="">Currency:</option>
-        <option v-for="(rate, currency) in rates" :key="currency" :value="[currency, rate]">{{currency}}</option>
-      </select>
-    </div>
-    <div class="flex center">
-      <p v-if="currentRate">{{convertedNumber}} {{currentRate[0]}}</p>
-    </div>
-  </div>
-
-  </div>
+</div>
 </body>
 </html>
