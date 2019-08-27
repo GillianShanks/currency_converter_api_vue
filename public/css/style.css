@@ -1,0 +1,24 @@
+.flex{
+  display: flex;
+  flex:1;
+}
+
+.flex-row{
+  flex-direction: row;
+}
+
+.between{
+  justify-content: space-between;
+}
+
+#app{
+  margin: 0 auto;
+  width: 60%;
+}
+
+
+.center{
+  /* border: 2px solid green; */
+  align-items: center;
+  justify-content: center;
+}

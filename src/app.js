@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
       inputNumber: null
     },
     computed: {
-
+      convertedNumber: function(){
+        return this.currentRate[1] * this.inputNumber;
+      }
     },
     mounted() {
       this.fetchCurrencies();

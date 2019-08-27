@@ -11,15 +11,27 @@
 <body>
   <div id="app" >
   <h1>Currency converter</h1>
-  <h3>Convert from (euros):</h3>
-  <input v-model="inputNumber" type="number" />
-  <h3>Convert to:</h3>
-  <select id="currency-select" v-model="currentRate">
-    <option selected disabled value="">Currency:</option>
-    <option v-for="(rate, currency, index) in rates" :key="index" :value="rate">{{currency}}</option>
-  </select>
-  <h3>Converted amount:</h3>
-  <p></p>
+
+  <div id="titles" class="flex flex-row between">
+    <h3>Convert from ({{base}}):</h3>
+    <h3>Convert to:</h3>
+    <h3>Converted amount:</h3>
+  </div>
+
+  <div id="row" class="flex flex-row between">
+    <div class="flex center">
+      <input v-model="inputNumber" type="number" min="0"/>
+    </div>
+    <div id="convert-to-select" class="flex center">
+      <select id="currency-select" v-model="currentRate">
+        <option selected disabled value="">Currency:</option>
+        <option v-for="(rate, currency) in rates" :key="currency" :value="[currency, rate]">{{currency}}</option>
+      </select>
+    </div>
+    <div class="flex center">
+      <p v-if="currentRate">{{convertedNumber}} {{currentRate[0]}}</p>
+    </div>
+  </div>
 
   </div>
 </body>
